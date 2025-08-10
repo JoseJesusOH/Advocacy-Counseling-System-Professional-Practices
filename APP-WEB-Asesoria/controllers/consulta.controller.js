@@ -1047,11 +1047,12 @@ ${asesoria.datos_asesoria.estatus_asesoria === 'NO_TURNADA' ? '' : asesoria.turn
             })
           }
         } catch (error) {
+          /*
           const modal = document.querySelector('modal-warning');
           modal.message = 'Error al obtener las asesorias, intente de nuevo mas tarde';
           modal.title = 'Error'
           modal.open = 'true'
-
+ */
         }
       } else
         //En este caso la busqueda exitosa es true lo que significa que solo se procedera a realizar la consulta de las asesorias con filtros
