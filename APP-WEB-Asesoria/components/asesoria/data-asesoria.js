@@ -7,6 +7,7 @@ export class DataAsesoria extends HTMLElement {
     super()
     this.asesoria = asesoria
     this.domicilio = domicilio
+    console.log(domicilio)
     this.init(asesoria, domicilio)
     //Se inicializan las variables que representan los datos de la asesoria y el domicilio
   
@@ -33,8 +34,7 @@ export class DataAsesoria extends HTMLElement {
     const asesorado = asesoria.asesoria.asesorado
     const datosAsesoria = asesoria.asesoria.datos_asesoria
     const recibidos = asesoria.asesoria.recibidos
-    const domicilioData = domicilio.domicilio.colonia
-     
+
         //Se llenan los datos de la asesoria en este caso el nombre
     this.shadowRoot.getElementById(
       'nombre-asesorado'
@@ -58,13 +58,7 @@ export class DataAsesoria extends HTMLElement {
     this.shadowRoot.getElementById('calle').textContent = persona.domicilio.calle_domicilio
     this.shadowRoot.getElementById('numero-exterior').textContent = persona.domicilio.numero_exterior_domicilio
     this.shadowRoot.getElementById('numero-interior').textContent = persona.domicilio.numero_interior_domicilio
-    if( domicilioData  ){
-      this.shadowRoot.getElementById('codigo-postal').textContent =  domicilioData.codigo_postal.codigo_postal
-      this.shadowRoot.getElementById('estado').textContent = domicilioData.estado.nombre_estado
-      this.shadowRoot.getElementById('municipio').textContent = domicilioData.municipio.nombre_municipio
-      this.shadowRoot.getElementById('ciudad').textContent = domicilioData.ciudad.nombre_ciudad
-      this.shadowRoot.getElementById('colonia').textContent = domicilioData.colonia.nombre_colonia
-    }
+
   
     //Se llena el campo de nombre del asesor o defensor, dependiendo de si es asesor o defensor
     if (this.asesoria.asesoria.empleado) {
@@ -101,6 +95,15 @@ export class DataAsesoria extends HTMLElement {
      //se llena el campo de cumple requisitos  y se valida si cumple o no
     if (datosAsesoria.estatus_requisitos) this.shadowRoot.getElementById('cumple-requisitos').textContent = 'Si'
     else this.shadowRoot.getElementById('cumple-requisitos').textContent = 'No'
+      const domicilioData = domicilio.colonia
+      console.log(domicilioData)
+        if( domicilioData  ){
+      this.shadowRoot.getElementById('codigo-postal').textContent =  domicilioData.codigo_postal.codigo_postal
+      this.shadowRoot.getElementById('estado').textContent = domicilioData.estado.nombre_estado
+      this.shadowRoot.getElementById('municipio').textContent = domicilioData.municipio.nombre_municipio
+      this.shadowRoot.getElementById('ciudad').textContent = domicilioData.ciudad.nombre_ciudad
+      this.shadowRoot.getElementById('colonia').textContent = domicilioData.colonia.nombre_colonia
+    }
   }
 }
 
