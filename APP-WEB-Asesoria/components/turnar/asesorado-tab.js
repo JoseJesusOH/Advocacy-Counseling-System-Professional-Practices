@@ -54,7 +54,7 @@ export class AsesoradoTab extends HTMLElement {
 
     //Se obtiene la asesoria de la sesion esto es con respecto a la busqueda
     this.#asesoria = JSON.parse(sessionStorage.getItem('asesoria'))
-
+   console.log(this.#asesoria)
 
 
     // Se obtiene la informacion de la API
@@ -70,13 +70,13 @@ export class AsesoradoTab extends HTMLElement {
    async generoActual(){
       //Obtencion del genero actual
       try {
+        console.log(this.#asesoria.persona.genero.id_genero)
         const { genero } = await this.#api.getGeneroByID(this.#asesoria.persona.genero.id_genero)
         this.#generoActual = genero
         console.log(this.#generos)
       } catch (error) {
         console.error('Error al obtener datos de la API:', error)
       }
-    
      if (this.#generos === undefined) { 
       const option = document.createElement('option')
       option.value = this.#generoActual.id_genero
@@ -92,8 +92,7 @@ export class AsesoradoTab extends HTMLElement {
             break
           }
         }
-        
-        if (existe===false) {
+        if (existe) {
           const option = document.createElement('option')
           option.value = this.#generoActual.id_genero
           option.text = this.#generoActual.descripcion_genero

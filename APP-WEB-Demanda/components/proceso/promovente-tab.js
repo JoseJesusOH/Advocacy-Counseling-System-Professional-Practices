@@ -254,7 +254,7 @@ export class PromoventeTab extends HTMLElement {
           }
         }
         
-        if (existe===false) {
+        if (existe) {
           const option = document.createElement('option')
           option.value = this.#generoActual.id_genero
           option.text = this.#generoActual.descripcion_genero
